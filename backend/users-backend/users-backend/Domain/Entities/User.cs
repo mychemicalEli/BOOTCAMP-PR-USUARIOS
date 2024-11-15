@@ -25,8 +25,6 @@ public class User
     [MaxLength(100)]
     public string Email { get; set; }
 
-    [Required] public long RolId { get; set; }
+    [Required] public long RoleId { get; set; }
     [Required] public Rol Rol { get; set; }
-
-   // [Timestamp] public byte[] RowVersion { get; set; }
 }

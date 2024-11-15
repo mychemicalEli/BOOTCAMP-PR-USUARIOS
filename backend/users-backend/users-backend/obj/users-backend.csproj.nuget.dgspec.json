@@ -13,6 +13,7 @@
         "packagesPath": "/Users/mychemical_eli/.nuget/packages/",
         "outputPath": "/Users/mychemical_eli/Desktop/Ejercicios practicas/CASO PRACTICO FINAL/backend/framework/obj/",
         "projectStyle": "PackageReference",
+        "UsingMicrosoftNETSdk": false,
         "configFilePaths": [
           "/Users/mychemical_eli/.nuget/NuGet/NuGet.Config"
         ],
@@ -80,6 +81,7 @@
         "packagesPath": "/Users/mychemical_eli/.nuget/packages/",
         "outputPath": "/Users/mychemical_eli/Desktop/Ejercicios practicas/CASO PRACTICO FINAL/backend/users-backend/users-backend/obj/",
         "projectStyle": "PackageReference",
+        "UsingMicrosoftNETSdk": false,
         "configFilePaths": [
           "/Users/mychemical_eli/.nuget/NuGet/NuGet.Config"
         ],
@@ -114,6 +116,10 @@
               "version": "[7.0.3, )"
             },
             "Microsoft.EntityFrameworkCore.InMemory": {
+              "target": "Package",
+              "version": "[7.0.20, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[7.0.20, )"
             },

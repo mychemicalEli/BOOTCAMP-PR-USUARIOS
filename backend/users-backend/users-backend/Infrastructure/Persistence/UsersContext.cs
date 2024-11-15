@@ -20,7 +20,7 @@ public class UsersContext : DbContext
         modelBuilder.Entity<User>()
             .HasOne(i => i.Rol)
             .WithMany()
-            .HasForeignKey(i => i.RolId)
+            .HasForeignKey(i => i.RoleId)
             .IsRequired();
     }
 
