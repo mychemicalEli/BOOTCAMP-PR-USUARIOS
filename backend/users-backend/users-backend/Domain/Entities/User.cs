@@ -12,13 +12,13 @@ public class User
     [MinLength(3)]
     [MaxLength(50)]
     [Required]
-    public string Nombre { get; set; }
+    public string Name { get; set; }
 
     [Column(TypeName = "varchar(100)")]
     [MinLength(3)]
     [MaxLength(100)]
     [Required]
-    public string Apellidos { get; set; }
+    public string LastName { get; set; }
 
     [Required]
     [EmailAddress]

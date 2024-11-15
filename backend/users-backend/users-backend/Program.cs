@@ -29,8 +29,7 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 if (builder.Environment.IsDevelopment())
 {
     builder.Services.AddDbContext<UsersContext>(options =>
-        options
-            .UseSqlServer(connectionString)
+        options.UseSqlServer(connectionString)
     );
 }
 

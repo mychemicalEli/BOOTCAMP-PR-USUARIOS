@@ -44,13 +44,13 @@ public class DataLoader
     {
         var users = new User[]
         {
-            new User { Nombre = "Elizabeth", Apellidos = "Blanco Méndez", Email = "elizabeth.blanco@gmail.com", RoleId = 1 },
-            new User { Nombre = "Ángel", Apellidos = "Hernández Castejón", Email = "angel.hernandez@hotmail.com", RoleId = 1 },
-            new User { Nombre = "Carlos", Apellidos = "Sánchez Rodríguez", Email = "carlos.sanchez@yahoo.com", RoleId = 2 },
-            new User { Nombre = "Ana", Apellidos = "Martínez López", Email = "ana.martinez@gmail.com", RoleId = 2 },
-            new User { Nombre = "Luis", Apellidos = "González Fernández", Email = "luis.gonzalez@outlook.com", RoleId = 2 },
-            new User { Nombre = "Marta", Apellidos = "Jiménez García", Email = "marta.jimenez@icloud.com", RoleId = 2 },
-            new User { Nombre = "Pedro", Apellidos = "Ramírez Martínez", Email = "pedro.ramirez@live.com", RoleId = 2 }
+            new User { Name = "Elizabeth", LastName = "Blanco Méndez", Email = "elizabeth.blanco@gmail.com", RoleId = 1 },
+            new User { Name = "Ángel", LastName = "Hernández Castejón", Email = "angel.hernandez@hotmail.com", RoleId = 1 },
+            new User { Name = "Carlos", LastName = "Sánchez Rodríguez", Email = "carlos.sanchez@yahoo.com", RoleId = 2 },
+            new User { Name = "Ana", LastName = "Martínez López", Email = "ana.martinez@gmail.com", RoleId = 2 },
+            new User { Name = "Luis", LastName = "González Fernández", Email = "luis.gonzalez@outlook.com", RoleId = 2 },
+            new User { Name = "Marta", LastName = "Jiménez García", Email = "marta.jimenez@icloud.com", RoleId = 2 },
+            new User { Name = "Pedro", LastName = "Ramírez Martínez", Email = "pedro.ramirez@live.com", RoleId = 2 }
         };
         foreach (User user in users)
         {

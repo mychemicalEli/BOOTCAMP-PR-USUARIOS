@@ -64,8 +64,8 @@ public class UserRepository : GenericRepository<User>, IUserRepository
         var usersDto = users.Select(i => new UserDto()
         {
             Id = i.Id,
-            Nombre = i.Nombre,
-            Apellidos = i.Apellidos,
+            Name = i.Name,
+            LastName = i.LastName,
             Email = i.Email,
             RoleId = i.RoleId,
             RoleName = i.Role.Name

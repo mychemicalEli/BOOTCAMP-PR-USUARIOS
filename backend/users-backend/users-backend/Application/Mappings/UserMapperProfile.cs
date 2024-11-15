@@ -11,7 +11,6 @@ public class UserMapperProfile : Profile
         CreateMap<User, UserDto>()
             .ForMember(dest => dest.RoleName, opt => opt.MapFrom(src => src.Role.Name));
 
-        CreateMap<UserDto, User>()
-            .ForMember(dest => dest.Role, opt => opt.Ignore());
+        CreateMap<UserDto, User>();
     }
 }
