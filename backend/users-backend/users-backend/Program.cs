@@ -8,11 +8,11 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddScoped<IRolService, RolService>();
+builder.Services.AddScoped<IRoleService, RoleService>();
 builder.Services.AddScoped<IUserService, UserService>();
-builder.Services.AddScoped<IRolRepository, RolRepository>();
+builder.Services.AddScoped<IRoleRepository, RoleRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
-builder.Services.AddAutoMapper(typeof(RolMapperProfile));
+builder.Services.AddAutoMapper(typeof(RoleMapperProfile));
 builder.Services.AddAutoMapper(typeof(UserMapperProfile));
 builder.Services.AddAutoMapper(typeof(UserMapperProfile));
 builder.Services.AddScoped(typeof(ISpecificationParser<>), typeof(SpecificationParser<>));

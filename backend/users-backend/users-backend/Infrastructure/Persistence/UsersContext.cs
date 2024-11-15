@@ -18,12 +18,12 @@ public class UsersContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<User>()
-            .HasOne(i => i.Rol)
+            .HasOne(i => i.Role)
             .WithMany()
             .HasForeignKey(i => i.RoleId)
             .IsRequired();
     }
 
     public DbSet<User> Users { get; set; }
-    public DbSet<Rol> Roles { get; set; }
+    public DbSet<Role> Roles { get; set; }
 }

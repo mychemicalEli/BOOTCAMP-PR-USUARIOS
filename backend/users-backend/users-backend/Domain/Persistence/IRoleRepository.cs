@@ -3,6 +3,6 @@ using framework.Domain.Persistence;
 
 namespace users_backend.Domain.Persistence;
 
-public interface IRolRepository:IGenericRepository<Rol>
+public interface IRoleRepository:IGenericRepository<Role>
 {
 }

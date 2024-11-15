@@ -4,11 +4,11 @@ using users_backend.Domain.Entities;
 
 namespace users_backend.Application.Mappings;
 
-public class RolMapperProfile:Profile
+public class RoleMapperProfile:Profile
 {
-    public RolMapperProfile()
+    public RoleMapperProfile()
     {
-        CreateMap<Rol, RolDto>();
-        CreateMap<RolDto, Rol>();
+        CreateMap<Role, RoleDto>();
+        CreateMap<RoleDto, Role>();
     }
 }

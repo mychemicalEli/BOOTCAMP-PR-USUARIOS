@@ -3,6 +3,6 @@ using framework.Application.Services;
 
 namespace users_backend.Application.Services;
 
-public interface IRolService: IGenericService<RolDto>
+public interface IRoleService: IGenericService<RoleDto>
 {
 }

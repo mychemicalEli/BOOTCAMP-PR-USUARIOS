@@ -29,12 +29,12 @@ public class DataLoader
 
     public void LoadRoles()
     {
-        var roles = new Rol[]
+        var roles = new Role[]
         {
-            new Rol { Name = "Administrator" },
-            new Rol { Name = "Contributor" },
+            new Role { Name = "Administrator" },
+            new Role { Name = "Contributor" },
         };
-        foreach (Rol rol in roles)
+        foreach (Role rol in roles)
         {
             usersContext.Roles.Add(rol);
         }
@@ -44,23 +44,11 @@ public class DataLoader
     {
         var users = new User[]
         {
-            new User
-            {
-                Nombre = "Elizabeth", Apellidos = "Blanco Méndez", Email = "elizabeth.blanco@gmail.com", RoleId = 1
-            },
-            new User
-            {
-                Nombre = "Ángel", Apellidos = "Hernández Castejón", Email = "angel.hernandez@hotmail.com", RoleId = 1
-            },
-            new User
-            {
-                Nombre = "Carlos", Apellidos = "Sánchez Rodríguez", Email = "carlos.sanchez@yahoo.com", RoleId = 2
-            },
+            new User { Nombre = "Elizabeth", Apellidos = "Blanco Méndez", Email = "elizabeth.blanco@gmail.com", RoleId = 1 },
+            new User { Nombre = "Ángel", Apellidos = "Hernández Castejón", Email = "angel.hernandez@hotmail.com", RoleId = 1 },
+            new User { Nombre = "Carlos", Apellidos = "Sánchez Rodríguez", Email = "carlos.sanchez@yahoo.com", RoleId = 2 },
             new User { Nombre = "Ana", Apellidos = "Martínez López", Email = "ana.martinez@gmail.com", RoleId = 2 },
-            new User
-            {
-                Nombre = "Luis", Apellidos = "González Fernández", Email = "luis.gonzalez@outlook.com", RoleId = 2
-            },
+            new User { Nombre = "Luis", Apellidos = "González Fernández", Email = "luis.gonzalez@outlook.com", RoleId = 2 },
             new User { Nombre = "Marta", Apellidos = "Jiménez García", Email = "marta.jimenez@icloud.com", RoleId = 2 },
             new User { Nombre = "Pedro", Apellidos = "Ramírez Martínez", Email = "pedro.ramirez@live.com", RoleId = 2 }
         };

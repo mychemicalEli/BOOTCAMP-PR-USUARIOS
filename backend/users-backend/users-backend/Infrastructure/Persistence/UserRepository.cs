@@ -20,26 +20,22 @@ public class UserRepository : GenericRepository<User>, IUserRepository
         _usersContext = usersContext;
         _specificationParser = specificationParser;
     }
-
-    //Sobreescribimos el método GetById para que nos devuelva también el nombre del rol
+    
     public override User GetById(long id)
     {
-        var user = _usersContext.Users.Include(i => i.Rol).SingleOrDefault(i => i.Id == id);
+        var user = _usersContext.Users.Include(i => i.Role).SingleOrDefault(i => i.Id == id);
         if (user == null)
         {
             throw new ElementNotFoundException();
         }
-
         return user;
     }
-
-    /* Sobreescribimos el metodo POST y el PUT para que nos devuelvan en el user creado con los datos correspondientes
-al rol */
+    
     public override User Insert(User user)
     {
         _usersContext.Users.Add(user);
         _usersContext.SaveChanges();
-        _usersContext.Entry(user).Reference(i => i.Rol).Load();
+        _usersContext.Entry(user).Reference(i => i.Role).Load();
         return user;
     }
 
@@ -47,12 +43,10 @@ al rol */
     {
         _usersContext.Users.Update(user);
         _usersContext.SaveChanges();
-        _usersContext.Entry(user).Reference(i => i.Rol).Load();
+        _usersContext.Entry(user).Reference(i => i.Role).Load();
         return user;
     }
-
-
-    // Listado paginado y filtrado de usuarios
+    
     public PagedList<UserDto> GetUsersByCriteriaPaged(string? filter, PaginationParameters paginationParameters)
     {
         var users = _usersContext.Users.AsQueryable();
@@ -74,7 +68,7 @@ al rol */
             Apellidos = i.Apellidos,
             Email = i.Email,
             RoleId = i.RoleId,
-            RoleName = i.Rol.Name
+            RoleName = i.Role.Name
         });
         return PagedList<UserDto>.ToPagedList(usersDto, paginationParameters.PageNumber, paginationParameters.PageSize);
     }

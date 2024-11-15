@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace users_backend.Domain.Entities;
 
 [Table("roles")]
-public class Rol
+public class Role
 {
     public long Id { get; set; }
 

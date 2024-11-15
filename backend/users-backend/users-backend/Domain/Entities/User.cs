@@ -26,5 +26,5 @@ public class User
     public string Email { get; set; }
 
     [Required] public long RoleId { get; set; }
-    [Required] public Rol Rol { get; set; }
+    [Required] public Role Role { get; set; }
 }

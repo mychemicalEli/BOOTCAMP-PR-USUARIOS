@@ -7,9 +7,7 @@ using users_backend.Domain.Persistence;
 
 namespace users_backend.Application.Services;
 
-public class RolService : GenericService<Rol, RolDto>, IRolService
+public class RoleService : GenericService<Role, RoleDto>, IRoleService
 {
-    public RolService(IRolRepository repository, IMapper mapper) : base(repository, mapper)
-    {
-    }
+    public RoleService(IRoleRepository repository, IMapper mapper) : base(repository, mapper) {}
 }

@@ -7,10 +7,10 @@ namespace users_backend.Infrastructure.Rest;
 
 [Route("/users/[controller]")]
 [ApiController]
-public class RolesController : GenericCrudController<RolDto>
+public class RolesController : GenericCrudController<RoleDto>
 {
 
-    public RolesController(IRolService rolService): base(rolService)
+    public RolesController(IRoleService roleService): base(roleService)
     {
     }
 }
