@@ -13,6 +13,4 @@ public class Rol
     [MaxLength(50)]
     [Required]
     public string Name { get; set; }
-
-   // [Timestamp] public byte[] RowVersion { get; set; }
 }

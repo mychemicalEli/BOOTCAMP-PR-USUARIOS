@@ -7,5 +7,4 @@ namespace users_backend.Infrastructure.Persistence;
 public class RolRepository:GenericRepository<Rol>, IRolRepository
 {
     public RolRepository(UsersContext context) : base(context) {}
-    
 }

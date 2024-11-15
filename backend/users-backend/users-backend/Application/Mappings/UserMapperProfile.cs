@@ -8,7 +8,10 @@ public class UserMapperProfile : Profile
 {
     public UserMapperProfile()
     {
-        CreateMap<User, UserDto>();
-        CreateMap<UserDto, User>();
+        CreateMap<User, UserDto>()
+            .ForMember(dest => dest.RoleName, opt => opt.MapFrom(src => src.Rol.Name));
+
+        CreateMap<UserDto, User>()
+            .ForMember(dest => dest.Rol, opt => opt.Ignore());
     }
 }

@@ -31,7 +31,7 @@ public class DataLoader
     {
         var roles = new Rol[]
         {
-            new Rol { Name = "Administrador" },
+            new Rol { Name = "Administrator" },
             new Rol { Name = "Contributor" },
         };
         foreach (Rol rol in roles)
@@ -46,23 +46,23 @@ public class DataLoader
         {
             new User
             {
-                Nombre = "Elizabeth", Apellidos = "Blanco Méndez", Email = "elizabeth.blanco@gmail.com", RolId = 1
+                Nombre = "Elizabeth", Apellidos = "Blanco Méndez", Email = "elizabeth.blanco@gmail.com", RoleId = 1
             },
             new User
             {
-                Nombre = "Ángel", Apellidos = "Hernández Castejón", Email = "angel.hernandez@hotmail.com", RolId = 1
+                Nombre = "Ángel", Apellidos = "Hernández Castejón", Email = "angel.hernandez@hotmail.com", RoleId = 1
             },
             new User
             {
-                Nombre = "Carlos", Apellidos = "Sánchez Rodríguez", Email = "carlos.sanchez@yahoo.com", RolId = 2
+                Nombre = "Carlos", Apellidos = "Sánchez Rodríguez", Email = "carlos.sanchez@yahoo.com", RoleId = 2
             },
-            new User { Nombre = "Ana", Apellidos = "Martínez López", Email = "ana.martinez@gmail.com", RolId = 2 },
+            new User { Nombre = "Ana", Apellidos = "Martínez López", Email = "ana.martinez@gmail.com", RoleId = 2 },
             new User
             {
-                Nombre = "Luis", Apellidos = "González Fernández", Email = "luis.gonzalez@outlook.com", RolId = 2
+                Nombre = "Luis", Apellidos = "González Fernández", Email = "luis.gonzalez@outlook.com", RoleId = 2
             },
-            new User { Nombre = "Marta", Apellidos = "Jiménez García", Email = "marta.jimenez@icloud.com", RolId = 2 },
-            new User { Nombre = "Pedro", Apellidos = "Ramírez Martínez", Email = "pedro.ramirez@live.com", RolId = 2 }
+            new User { Nombre = "Marta", Apellidos = "Jiménez García", Email = "marta.jimenez@icloud.com", RoleId = 2 },
+            new User { Nombre = "Pedro", Apellidos = "Ramírez Martínez", Email = "pedro.ramirez@live.com", RoleId = 2 }
         };
         foreach (User user in users)
         {

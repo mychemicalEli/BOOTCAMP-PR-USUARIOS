@@ -5,5 +5,4 @@ namespace users_backend.Application.Services;
 
 public interface IRolService: IGenericService<RolDto>
 {
-    
 }
