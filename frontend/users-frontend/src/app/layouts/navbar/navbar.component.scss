@@ -1,10 +1,31 @@
-.navbar{
+.navbar {
     height: 100px;
-    background-color:darkslategray;
-    .navbar-brand{
+    background-color: darkslategray;
+
+    .navbar-brand {
         font-family: 'Bebas Neue', sans-serif;
         color: whitesmoke;
         letter-spacing: 3px;
         font-size: 2em;
+    }
+
+    img {
+        margin-left: 20px;
+        width: 50px;
+        height: auto;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    .fa-solid {
+        color: whitesmoke;
+        font-size: 20px;
+        margin-right: 20px;
+
+        &:hover {
+            cursor: pointer;
+        }
     }
 }
