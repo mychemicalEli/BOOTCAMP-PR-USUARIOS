@@ -1,6 +1,8 @@
 using framework.Application;
+using framework.Domain.Persistence;
 using framework.Infrastructure.Rest;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using users_backend.Application.Dtos;
 using users_backend.Application.Services;
 
@@ -46,4 +48,19 @@ public class UsersController : GenericCrudController<UserDto>
             return BadRequest();
         }
     }
+    
+    [HttpPut]
+    public override ActionResult<UserDto> Update(UserDto userDto)
+    {
+        try
+        {
+            var updatedUser = _userService.Update(userDto);
+            return Ok(updatedUser);
+        }
+        catch (ConcurrencyException ex)
+        {
+            return Conflict(new { message = ex.Message });
+        }
+    }
+
 }

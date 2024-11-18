@@ -68,7 +68,8 @@ public class UserRepository : GenericRepository<User>, IUserRepository
             LastName = i.LastName,
             Email = i.Email,
             RoleId = i.RoleId,
-            RoleName = i.Role.Name
+            RoleName = i.Role.Name,
+            RowVersion = i.RowVersion
         });
         return PagedList<UserDto>.ToPagedList(usersDto, paginationParameters.PageNumber, paginationParameters.PageSize);
     }

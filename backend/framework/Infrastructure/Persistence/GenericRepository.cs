@@ -54,7 +54,7 @@ public class GenericRepository<T> : IGenericRepository<T> where T : class
         _dbSet.Remove(entity);
         _context.SaveChanges();
     }
-
+    
 
     // Este método construye la expresion LINQ que establece la ordenación de la consulta
     protected virtual IQueryable<T> ApplySortOrder(IQueryable<T> entities, string sortOrder)
