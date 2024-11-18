@@ -22,6 +22,9 @@ public class UsersContext : DbContext
             .WithMany()
             .HasForeignKey(i => i.RoleId)
             .IsRequired();
+        modelBuilder.Entity<User>()
+            .Property(u => u.RowVersion)
+            .IsRowVersion();
     }
 
     public DbSet<User> Users { get; set; }

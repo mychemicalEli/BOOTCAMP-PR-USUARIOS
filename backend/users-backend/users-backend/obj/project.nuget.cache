@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "POaGTWDzXyE=",
+  "dgSpecHash": "Av8WxE5qnqo=",
   "success": true,
   "projectFilePath": "/Users/mychemical_eli/Desktop/Ejercicios practicas/CASO PRACTICO FINAL/backend/users-backend/users-backend/users-backend.csproj",
   "expectedPackageFiles": [
@@ -15,7 +15,6 @@
     "/Users/mychemical_eli/.nuget/packages/microsoft.entityframeworkcore/7.0.20/microsoft.entityframeworkcore.7.0.20.nupkg.sha512",
     "/Users/mychemical_eli/.nuget/packages/microsoft.entityframeworkcore.abstractions/7.0.20/microsoft.entityframeworkcore.abstractions.7.0.20.nupkg.sha512",
     "/Users/mychemical_eli/.nuget/packages/microsoft.entityframeworkcore.analyzers/7.0.20/microsoft.entityframeworkcore.analyzers.7.0.20.nupkg.sha512",
-    "/Users/mychemical_eli/.nuget/packages/microsoft.entityframeworkcore.inmemory/7.0.20/microsoft.entityframeworkcore.inmemory.7.0.20.nupkg.sha512",
     "/Users/mychemical_eli/.nuget/packages/microsoft.entityframeworkcore.relational/7.0.20/microsoft.entityframeworkcore.relational.7.0.20.nupkg.sha512",
     "/Users/mychemical_eli/.nuget/packages/microsoft.entityframeworkcore.sqlserver/7.0.20/microsoft.entityframeworkcore.sqlserver.7.0.20.nupkg.sha512",
     "/Users/mychemical_eli/.nuget/packages/microsoft.extensions.apidescription.server/6.0.5/microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",

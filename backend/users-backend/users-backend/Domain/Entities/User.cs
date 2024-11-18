@@ -27,4 +27,8 @@ public class User
 
     [Required] public long RoleId { get; set; }
     [Required] public Role Role { get; set; }
+    
+    //Concurrencia
+    [Timestamp]
+    public byte[] RowVersion { get; set; }
 }
