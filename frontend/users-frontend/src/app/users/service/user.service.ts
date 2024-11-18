@@ -10,10 +10,13 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  public getUsers(page: number, size: number): Observable<PaginatedResponse<UserDto>> {
-    const url = `http://localhost:5085/users?PageNumber=${page}&PageSize=${size}`;
-    return this.http.get<PaginatedResponse<UserDto>>(url);
+  public getUsers(page: number, size: number, filters?: string): Observable<PaginatedResponse<UserDto>> {
+    let urlEndPoint = `http://localhost:5085/users?PageNumber=${page}&PageSize=${size}`;
+    if (filters) {
+      urlEndPoint = urlEndPoint + "&filter=" + filters;
+    }
+    return this.http.get<PaginatedResponse<UserDto>>(urlEndPoint);
   }
-  
-  
+
+
 }

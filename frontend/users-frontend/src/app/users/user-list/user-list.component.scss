@@ -2,16 +2,10 @@ table {
     padding: 50px;
 }
 
-#btnFilter,
+#btnSearch,
 #btnCreateUser {
     padding-left: 30px;
     padding-right: 30px;
-    color: darkslategray;
-
-    &:hover {
-        background-color: darkslategray;
-        color: whitesmoke;
-    }
 
     .fa-filter,
     .fa-square-plus {
@@ -20,6 +14,24 @@ table {
     }
 }
 
+#btnSearch {
+    color: darkslategray;
+
+    &:hover {
+        background-color: darkslategray;
+        color: whitesmoke;
+    }
+}
+
+#btnCreateUser {
+    color: whitesmoke;
+    background-color: darkslategray;
+
+    &:hover {
+        background-color: white;
+        color: darkslategray;
+    }
+}
 
 .paginationButtons {
     display: flex;
