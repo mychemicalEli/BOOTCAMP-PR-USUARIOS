@@ -9,6 +9,7 @@ import { FooterComponent } from './layouts/footer/footer.component';
 import { UserFormComponent } from './users/user-form/user-form.component';
 import { UserListComponent } from './users/user-list/user-list.component';
 import { HttpRequestInterceptor } from './config/interceptors/http-request-interceptor.interceptor';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { HttpRequestInterceptor } from './config/interceptors/http-request-inter
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [
     provideHttpClient(withFetch()),

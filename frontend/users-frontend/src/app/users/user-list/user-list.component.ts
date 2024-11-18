@@ -15,6 +15,12 @@ export class UserListComponent implements OnInit {
   pageSize: number = 10;
   totalCount: number = 0;
 
+  nameFilter?: string;
+  lastNameFilter?: string;
+  roleFilter?: string;
+
+  noResultsFound: boolean = false;
+
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
@@ -22,13 +28,15 @@ export class UserListComponent implements OnInit {
   }
 
   private getUsers(): void {
-    this.userService.getUsers(this.currentPage, this.pageSize).subscribe({
+    const filters: string | undefined = this.buildFilters();
+    this.userService.getUsers(this.currentPage, this.pageSize, filters).subscribe({
       next: (response: PaginatedResponse<UserDto>) => {
         this.users = response.data;
         this.currentPage = response.currentPage;
         this.totalPages = response.totalPages;
         this.pageSize = response.pageSize;
         this.totalCount = response.totalCount;
+        this.noResultsFound = this.users.length === 0;
       },
       error: (err) => {
         console.error(this.handleError(err));
@@ -47,6 +55,29 @@ export class UserListComponent implements OnInit {
   public nextPage(): void {
     this.currentPage = this.currentPage + 1;
     this.getUsers();
+  }
+
+  private buildFilters(): string | undefined {
+    const filters: string[] = [];
+  
+    if (this.nameFilter) filters.push(`name:MATCH:${this.nameFilter}`);
+    if (this.lastNameFilter) filters.push(`lastName:MATCH:${this.lastNameFilter}`);
+    if (this.roleFilter) filters.push(`role.Name:MATCH:${this.roleFilter}`);
+  
+    return filters.length > 0 ? filters.join(",") : undefined;
+  }
+  
+
+  public searchByFilters(): void {
+    this.currentPage = 1; 
+    this.getUsers();
+  }
+
+  public resetFilters(): void {
+    this.nameFilter = '';
+    this.lastNameFilter = '';
+    this.roleFilter = '';
+    this.searchByFilters(); 
   }
 
 }
