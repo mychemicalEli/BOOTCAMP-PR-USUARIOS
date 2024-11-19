@@ -1,0 +1,51 @@
+.title {
+    background-color: whitesmoke;
+    color: darkslategray;
+    padding: 30px;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.form-container {
+    background-color: #d9e6d8;
+    width: 100%;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+    .ng-valid[required],
+    .ng-valid-required {
+        border-left: 5px solid green;
+    }
+
+    .ng-invalid:not(form) {
+        border-left: 5px solid red;
+    }
+
+    .buttonsForm {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+        justify-content: end;
+
+        .btn-save {
+            background-color: darkslategray;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+
+            &:hover {
+                background-color: #1f3636;
+            }
+        }
+
+        .btn-outline-danger {
+            padding: 10px 20px;
+        }
+    }
+
+}

@@ -7,11 +7,12 @@ export interface PaginatedResponse<UserDto> {
   }
   
   export interface UserDto {
-    id: number;
+    id: number | undefined;
     name: string;
     lastName: string;
     email: string;
     roleId: number;
     roleName: string;
+    rowVersion: string | null;
   }
   

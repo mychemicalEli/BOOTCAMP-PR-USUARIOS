@@ -20,6 +20,7 @@ export class UserListComponent implements OnInit {
   roleFilter?: string;
 
   noResultsFound: boolean = false;
+  loadError: boolean = false;
 
   selectedUser: { name: string; lastName: string } | null = null;
   userIdToDelete?: number;
@@ -41,7 +42,9 @@ export class UserListComponent implements OnInit {
         this.totalCount = response.totalCount;
         this.noResultsFound = this.users.length === 0;
       },
-      error: (err) => { this.handleError(err); }
+      error: (err) => { 
+        this.loadError = true; 
+        this.handleError(err); }
     });
   }
 
@@ -85,19 +88,21 @@ export class UserListComponent implements OnInit {
     this.selectedUser = user;
   }
 
-  public prepareUserToDelete(userId:number):void{
-    this.userIdToDelete=userId;
+  public prepareUserToDelete(userId?: number): void {
+    if (userId !== undefined) {
+      this.userIdToDelete = userId;
+    }
   }
 
-  public deleteUser():void{
-    if(this.userIdToDelete){
-    this.userService.deleteUser(this.userIdToDelete).subscribe({
-      next: (data)=>{
-        this.getUsers();
-      },
-      error:(err)=> {this.handleError(err)}
-    });
+  public deleteUser(): void {
+    if (this.userIdToDelete) {
+      this.userService.deleteUser(this.userIdToDelete).subscribe({
+        next: (data) => {
+          this.getUsers();
+        },
+        error: (err) => { this.handleError(err) }
+      });
+    }
   }
-}
 
 }
