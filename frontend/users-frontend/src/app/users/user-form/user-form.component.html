@@ -1,1 +1,99 @@
-{{title}}
+<h4 class="title">{{ mode }}</h4>
+<div class="form-container">
+  <form *ngIf="user" #userForm="ngForm" name="userForm" role="form" novalidate autocomplete="off">
+
+    <!--ID (readonly)-->
+    <div class="form-floating mb-3">
+      <input type="number" class="form-control" id="floatingId" [(ngModel)]="user.id" name="id" readonly disabled
+        placeholder="ID" #id="ngModel">
+      <label for="floatingId">ID</label>
+    </div>
+
+    <!--Nombre-->
+    <div class="form-floating mb-3">
+      <input type="text" class="form-control" id="floatingName" [(ngModel)]="user.name" name="name" placeholder="Nombre"
+        required minlength="3" maxlength="50" #name="ngModel">
+      <label for="floatingName">Nombre</label>
+      
+      <!--Validación del Nombre-->
+      <div *ngIf="name.dirty && name.errors" class="text-danger">
+        <small *ngIf="name.errors['required']">Este campo es requerido.</small>
+        <small *ngIf="name.errors['minlength']">Debe tener más de tres caracteres.</small>
+      </div>
+    </div>
+
+    <!--Apellidos-->
+    <div class="form-floating mb-3">
+      <input type="text" class="form-control" id="floatingLastName" [(ngModel)]="user.lastName" name="lastName"
+        placeholder="Apellidos" required minlength="3" maxlength="100" #lastName="ngModel">
+      <label for="floatingLastName">Apellidos</label>
+
+      <!--Validación de los Apellidos-->
+      <div *ngIf="lastName.dirty && lastName.errors" class="text-danger">
+        <small *ngIf="lastName.errors['required']">Este campo es requerido.</small>
+        <small *ngIf="lastName.errors['minlength']">Debe tener más de tres caracteres.</small>
+      </div>
+    </div>
+
+    <!--Email-->
+    <div class="form-floating mb-3">
+      <input type="email" class="form-control" id="floatingEmail" [(ngModel)]="user.email" name="email"
+    placeholder="Email" required minlength="5" maxlength="100"
+    pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,5}" #email="ngModel">
+
+      <label for="floatingEmail">Email</label>
+
+      <!--Validación Email-->
+      <div *ngIf="email.dirty && email.errors" class="text-danger">
+        <div *ngIf="email.errors?.['required']">El email es obligatorio.</div>
+        <div *ngIf="email.errors?.['pattern']">El formato del email no es válido.</div>
+        <div *ngIf="email.errors?.['minlength']">El email debe tener al menos 5 caracteres.</div>
+        <div *ngIf="email.errors?.['maxlength']">El email no puede exceder los 100 caracteres.</div>
+      </div>
+    </div>
+
+    <!--Roles-->
+    <div class="form-floating mb-3">
+      <select class="form-select" id="floatingRoleName" [(ngModel)]="user.roleId" name="roleId" placeholder="Rol"
+        required #roleName="ngModel">
+        <option value="0" disabled selected>Selecciona un rol</option>
+        <option *ngFor="let role of roles" [value]="role.id">{{ role.name }}</option>
+      </select>
+      <label for="floatingRoleName">Rol</label>
+    </div>
+
+    <!--RowVersion-->
+    <div class="form-floating mb-3">
+      <input type="text" class="form-control" id="floatingRowVersion" [(ngModel)]="user.rowVersion" name="rowVersion"
+        placeholder="rowVersion" #rowVersion="ngModel" readonly disabled>
+      <label for="floatingRowVersion">RowVersion</label>
+    </div>
+
+    <!-- Botones -->
+    <div class="buttonsForm text-end">
+      <button class="btn btn-outline-danger" data-bs-toggle="modal"
+      data-bs-target="#dismissChanges">Cancelar</button>
+      <button class="btn btn-save" (click)="saveUser()" [disabled]="userForm.invalid">Guardar</button>
+    </div>
+  </form>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="dismissChanges" tabindex="-1" aria-labelledby="dismissChanges"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="dismissChanges">¿Estás seguro?</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Si continúas, los cambios realizados se perderán.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="goBack()">Descartar cambios</button>
+            </div>
+        </div>
+    </div>
+</div>

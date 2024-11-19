@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { PaginatedResponse, UserDto } from '../model/user.model';
+import { RoleDto } from '../model/role.model';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +22,27 @@ export class UserService {
   public deleteUser(userIdToDelete: number): Observable<any> {
     let urlEndPoint: string = "http://localhost:5085/users/" + userIdToDelete;
     return this.http.delete<any>(urlEndPoint);
+  }
+
+  public getUserById(userId:number): Observable<UserDto>{
+    let urlEndPoint: string = "http://localhost:5085/users/" + userId;
+    return this.http.get<UserDto>(urlEndPoint);
+  }
+
+  public insertUser(user: UserDto):Observable<UserDto>{
+    let urlEndPoint: string = "http://localhost:5085/users/";
+    return this.http.post<UserDto>(urlEndPoint, user);
+  }
+
+  public updateUser(user: UserDto):Observable<UserDto>{
+    let urlEndPoint: string = "http://localhost:5085/users/";
+    return this.http.put<UserDto>(urlEndPoint, user);
+  }
+
+
+  public getRoles():Observable<RoleDto[]>{
+    let urlEndPoint: string = "http://localhost:5085/users/roles";
+    return this.http.get<RoleDto[]>(urlEndPoint);
   }
 
 
