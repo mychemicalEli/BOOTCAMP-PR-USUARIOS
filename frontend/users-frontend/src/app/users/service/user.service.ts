@@ -18,5 +18,10 @@ export class UserService {
     return this.http.get<PaginatedResponse<UserDto>>(urlEndPoint);
   }
 
+  public deleteUser(userIdToDelete: number): Observable<any> {
+    let urlEndPoint: string = "http://localhost:5085/users/" + userIdToDelete;
+    return this.http.delete<any>(urlEndPoint);
+  }
+
 
 }
