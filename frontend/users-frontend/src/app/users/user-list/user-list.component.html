@@ -71,9 +71,11 @@
                                 <i class="fa-solid fa-pen-to-square"></i>
                             </button>
                         </a>
-                        <button id="btnDeleteUser" class="btn">
+                        <button id="btnDeleteUser" class="btn" data-bs-toggle="modal"
+                            data-bs-target="#askConfirmationDelete" (click)="setSelectedUser(user)" (click)="prepareUserToDelete(user.id)">
                             <i class="fa-solid fa-trash"></i>
                         </button>
+
                     </td>
                 </tr>
             </tbody>
@@ -87,5 +89,26 @@
             Elementos totales: {{totalCount}}</span>
         <button [disabled]="currentPage === totalPages" class="btn btn-secondary btnPagination"
             (click)="nextPage()">Siguiente</button>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="askConfirmationDelete" tabindex="-1" aria-labelledby="askConfirmationDelete"
+    aria-hidden="true" *ngFor="let user of users">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="askConfirmationDelete">Confirmación de borrado</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                ¿Desea eliminar el registro de <strong> {{selectedUser?.name}}&nbsp;{{selectedUser?.lastName}}
+                </strong>? Esta operación no puede deshacerse.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="deleteUser()">Eliminar</button>
+            </div>
+        </div>
     </div>
 </div>

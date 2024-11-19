@@ -21,6 +21,9 @@ export class UserListComponent implements OnInit {
 
   noResultsFound: boolean = false;
 
+  selectedUser: { name: string; lastName: string } | null = null;
+  userIdToDelete?: number;
+
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
@@ -38,9 +41,7 @@ export class UserListComponent implements OnInit {
         this.totalCount = response.totalCount;
         this.noResultsFound = this.users.length === 0;
       },
-      error: (err) => {
-        console.error(this.handleError(err));
-      }
+      error: (err) => { this.handleError(err); }
     });
   }
 
@@ -59,17 +60,17 @@ export class UserListComponent implements OnInit {
 
   private buildFilters(): string | undefined {
     const filters: string[] = [];
-  
+
     if (this.nameFilter) filters.push(`name:MATCH:${this.nameFilter}`);
     if (this.lastNameFilter) filters.push(`lastName:MATCH:${this.lastNameFilter}`);
     if (this.roleFilter) filters.push(`role.Name:MATCH:${this.roleFilter}`);
-  
+
     return filters.length > 0 ? filters.join(",") : undefined;
   }
-  
+
 
   public searchByFilters(): void {
-    this.currentPage = 1; 
+    this.currentPage = 1;
     this.getUsers();
   }
 
@@ -77,7 +78,26 @@ export class UserListComponent implements OnInit {
     this.nameFilter = '';
     this.lastNameFilter = '';
     this.roleFilter = '';
-    this.searchByFilters(); 
+    this.searchByFilters();
   }
+
+  setSelectedUser(user: { name: string; lastName: string }): void {
+    this.selectedUser = user;
+  }
+
+  public prepareUserToDelete(userId:number):void{
+    this.userIdToDelete=userId;
+  }
+
+  public deleteUser():void{
+    if(this.userIdToDelete){
+    this.userService.deleteUser(this.userIdToDelete).subscribe({
+      next: (data)=>{
+        this.getUsers();
+      },
+      error:(err)=> {this.handleError(err)}
+    });
+  }
+}
 
 }
