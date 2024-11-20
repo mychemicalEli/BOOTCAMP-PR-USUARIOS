@@ -18,6 +18,8 @@ export class UserFormComponent implements OnInit {
 
   userForm?: FormGroup;
 
+  errorMessage: string | null = null;
+
   constructor(
     private route: ActivatedRoute,
     private userService: UserService,
@@ -26,7 +28,6 @@ export class UserFormComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.initializeUser();
     this.buildForm();
     const entryParam: string = this.route.snapshot.paramMap.get("id") ?? "new";
     if (entryParam !== "new") {
@@ -61,6 +62,12 @@ export class UserFormComponent implements OnInit {
 
   public handleError(error: any): void {
     console.log(error);
+    if (error.status === 409) {
+      this.errorMessage =
+        error.error?.message || "Error de concurrencia: el usuario ya fue actualizado por otro.";
+    } else {
+      this.errorMessage = "Ocurrió un error inesperado. Inténtalo de nuevo.";
+    }
   }
 
   public saveUser(): void {
