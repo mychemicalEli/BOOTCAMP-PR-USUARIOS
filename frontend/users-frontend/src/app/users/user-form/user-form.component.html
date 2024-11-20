@@ -19,7 +19,7 @@
 
     <!--Nombre-->
     <div class="form-floating mb-3">
-      <input type="text" class="form-control" id="name" formControlName="name" placeholder="Nombre">
+      <input type="text" class="form-control" id="name" formControlName="name" placeholder="Nombre" required>
       <label for="name">Nombre</label>
       
       <!--Validación del Nombre-->
@@ -32,7 +32,7 @@
     <!--Apellidos-->
     <div class="form-floating mb-3">
       <input type="text" class="form-control" id="lastName"  formControlName="lastName"
-        placeholder="Apellidos">
+        placeholder="Apellidos" required>
       <label for="lastName">Apellidos</label>
 
       <!--Validación de los Apellidos-->
@@ -45,7 +45,7 @@
     <!--Email-->
     <div class="form-floating mb-3">
       <input type="email" class="form-control" id="email" formControlName="email"
-    placeholder="Email">
+    placeholder="Email" required>
       <label for="email">Email</label>
 
       <!--Validación Email-->
@@ -59,7 +59,7 @@
 
 <!-- Roles -->
 <div class="form-floating mb-3">
-  <select class="form-select" id="roleName" formControlName="roleId" placeholder="Rol">
+  <select class="form-select" id="roleName" formControlName="roleId" placeholder="Rol" required>
     <option value="0" disabled selected>Selecciona un rol</option>
     <option *ngFor="let role of roles" [value]="role.id">{{ role.name }}</option>
   </select>
@@ -80,7 +80,7 @@
     <div class="buttonsForm text-end">
       <button class="btn btn-outline-danger" data-bs-toggle="modal"
       data-bs-target="#dismissChanges">Cancelar</button>
-      <button class="btn btn-save" (click)="saveUser()" [disabled]="userForm?.invalid || userForm?.get('roleId')?.value === 0">Guardar</button>
+      <button class="btn btn-save" [disabled]="userForm?.invalid || userForm?.get('roleId')?.value === 0" (click)="saveUser()" >Guardar</button>
     </div>
   </form>
 </div>

@@ -26,18 +26,25 @@ public class UserService :GenericService<User, UserDto>, IUserService
     public override UserDto Update(UserDto userDto)
     {
         var user = _userRepository.GetById(userDto.Id);
-        
+
         if (!user.RowVersion.SequenceEqual(userDto.RowVersion))
         {
-            throw new ConcurrencyException("The user record has been modified by another user.");
+            throw new ConcurrencyException ("El usuario ya fue actualizado por otro. Actualiza la información antes de continuar.");
         }
-        
-        user.Name = userDto.Name;
-        user.LastName = userDto.LastName;
-        user.Email = userDto.Email;
-        user.RoleId = userDto.RoleId;
 
-        _userRepository.Update(user);
-        return _mapper.Map<UserDto>(user);
+        try
+        {
+            user.Name = userDto.Name;
+            user.LastName = userDto.LastName;
+            user.Email = userDto.Email;
+            user.RoleId = userDto.RoleId;
+
+            _userRepository.Update(user);
+            return _mapper.Map<UserDto>(user);
+        }
+        catch (DbUpdateConcurrencyException ex)
+        {
+            throw new ConcurrencyException("El usuario ya fue actualizado por otra persona. Actualiza la información antes de continuar.", ex);
+        }
     }
 }

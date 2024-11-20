@@ -18,7 +18,7 @@ public class UsersController : GenericCrudController<UserDto>
     {
         _userService = userService;
     }
-    
+
     [NonAction]
     public override ActionResult<IEnumerable<UserDto>> GetAll()
     {
@@ -48,7 +48,7 @@ public class UsersController : GenericCrudController<UserDto>
             return BadRequest();
         }
     }
-    
+
     [HttpPut]
     public override ActionResult<UserDto> Update(UserDto userDto)
     {
@@ -57,10 +57,8 @@ public class UsersController : GenericCrudController<UserDto>
             var updatedUser = _userService.Update(userDto);
             return Ok(updatedUser);
         }
-        catch (ConcurrencyException ex)
-        {
+        catch (ConcurrencyException ex){
             return Conflict(new { message = ex.Message });
         }
     }
-
 }
