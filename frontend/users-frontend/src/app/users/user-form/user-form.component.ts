@@ -71,13 +71,13 @@ export class UserFormComponent implements OnInit {
   }
 
   public saveUser(): void {
-    const itemToSave: UserDto=this.createFromForm();
+    const userToSave: UserDto=this.createFromForm();
     if (this.mode === "CREAR NUEVO USUARIO") {
-      this.insertUser(itemToSave);
+      this.insertUser(userToSave);
     }
 
     if (this.mode === "EDITAR USUARIO") {
-      this.updateUser(itemToSave);
+      this.updateUser(userToSave);
     }
   }
 
