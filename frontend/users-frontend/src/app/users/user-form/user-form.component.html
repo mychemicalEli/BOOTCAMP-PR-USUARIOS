@@ -1,13 +1,21 @@
 <h4 class="title">{{ mode }}</h4>
+
+<!--Mostrar errores-->
+<div *ngIf="errorMessage" class="alert alert-danger" role="alert">
+  {{ errorMessage }}
+</div>
+
 <div class="form-container">
   <form *ngIf="user" [formGroup]="userForm!" novalidate autocomplete="off">
 
-    <!--ID (readonly)-->
+     <!--ID (readonly)-->
+    <div *ngIf="mode === 'EDITAR USUARIO'">
     <div class="form-floating mb-3">
       <input type="number" class="form-control" id="id" formControlName="id"
         placeholder="ID">
       <label for="id">ID</label>
     </div>
+  </div>
 
     <!--Nombre-->
     <div class="form-floating mb-3">
@@ -39,7 +47,6 @@
     <div class="form-floating mb-3">
       <input type="email" class="form-control" id="email" formControlName="email"
     placeholder="Email" required minlength="5" maxlength="100">
-
       <label for="email">Email</label>
 
       <!--Validación Email-->
@@ -61,9 +68,8 @@
 </div>
 
 
-
+ <!-- RowVersion -->
     <div *ngIf="mode === 'EDITAR USUARIO'">
-      <!-- RowVersion -->
       <div class="form-floating mb-3">
         <input type="text" class="form-control" id="rowVersion" formControlName="rowVersion"
           placeholder="rowVersion">

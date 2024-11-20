@@ -1,7 +1,10 @@
 <div class="container-fluid">
     <div class="d-flex justify-content-between mb-3">
+
+        <!--Filtros-->
         <form class="d-flex">
             <div class="row">
+                <!--Nombre-->
                 <div class="col-md-3">
                     <div class="form-floating">
                         <input type="text" class="form-control" id="floatingName" [(ngModel)]="nameFilter" name="name"
@@ -9,6 +12,7 @@
                         <label for="floatingName">Nombre</label>
                     </div>
                 </div>
+                <!--Apellidos-->
                 <div class="col-md-3">
                     <div class="form-floating">
                         <input type="text" class="form-control" id="floatingLastName" [(ngModel)]="lastNameFilter"
@@ -16,6 +20,7 @@
                         <label for="floatingLastName">Apellidos</label>
                     </div>
                 </div>
+                <!--Rol-->
                 <div class="col-md-3">
                     <div class="form-floating">
                         <input type="text" class="form-control" id="floatingRole" [(ngModel)]="roleFilter"
@@ -23,7 +28,7 @@
                         <label for="floatingRole">Rol</label>
                     </div>
                 </div>
-
+                <!--Botones-->
                 <div class="col-md-3 d-flex">
                     <button id="btnSearch" class="btn btn-outline-dark col-md-9 me-2" (click)="searchByFilters();">
                         <i class="fa-solid fa-filter"></i> Filtrar
@@ -35,6 +40,7 @@
             </div>
         </form>
 
+        <!--Botón crear usuario-->
         <a [routerLink]="['/users', 'new']">
             <button id="btnCreateUser" class="btn btn-outline-dark h-100">
                 <i class="fa-solid fa-square-plus"></i> Crear nuevo usuario
@@ -42,7 +48,8 @@
         </a>
     </div>
 
-     <div *ngIf="loadError" class="alert alert-danger" role="alert">
+    <!--Gestión de errores-->
+    <div *ngIf="loadError" class="alert alert-danger" role="alert">
         <h4 class="alert-heading">Error de carga</h4>
         <p>No se pudieron cargar los usuarios. Intenta nuevamente más tarde.</p>
         <hr>
@@ -53,6 +60,7 @@
         No se encontraron usuarios que coincidan con los filtros de búsqueda.
     </div>
 
+    <!--Lista de usuarios-->
     <div *ngIf="users.length > 0">
         <table class="table table-striped table-hover">
             <thead>
@@ -79,7 +87,8 @@
                             </button>
                         </a>
                         <button id="btnDeleteUser" class="btn" data-bs-toggle="modal"
-                            data-bs-target="#askConfirmationDelete" (click)="setSelectedUser(user);prepareUserToDelete(user.id)">
+                            data-bs-target="#askConfirmationDelete"
+                            (click)="setSelectedUser(user);prepareUserToDelete(user.id)">
                             <i class="fa-solid fa-trash"></i>
                         </button>
 
@@ -89,6 +98,8 @@
         </table>
     </div>
 
+
+    <!--Paginación-->
     <div class="paginationButtons text-center" *ngIf="users.length > 0">
         <button [disabled]="currentPage === 1" class="btn btn-secondary btnPagination"
             (click)="previousPage()">Anterior</button>
@@ -114,7 +125,8 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="deleteUser()">Eliminar</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal"
+                    (click)="deleteUser()">Eliminar</button>
             </div>
         </div>
     </div>
