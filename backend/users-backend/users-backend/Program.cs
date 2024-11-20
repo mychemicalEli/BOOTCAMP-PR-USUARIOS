@@ -1,3 +1,4 @@
+using framework.Domain.Persistence;
 using framework.Infrastructure.Specs;
 using Microsoft.AspNetCore.Diagnostics;
 using users_backend.Application.Mappings;
@@ -77,21 +78,47 @@ static void ConfigureExceptionhandler(WebApplication app)
     {
         errorApp.Run(async context =>
         {
+            // Obtén los detalles de la excepción
             IExceptionHandlerPathFeature? exceptionHandlerPathFeature =
                 context.Features.Get<IExceptionHandlerPathFeature>();
             var logger = app.Services.GetRequiredService<ILogger<Program>>();
+
+            // Configura el encabezado y el contenido de la respuesta
+            context.Response.ContentType = "application/json";
+            int statusCode = 500; // Código predeterminado para errores internos
+            string errorMessage = "An unexpected error occurred.";
+
             if (exceptionHandlerPathFeature?.Error != null)
             {
-                logger.LogError(exceptionHandlerPathFeature.Error,
-                    "An unhandled exception occurred while processing the request");
+                var exception = exceptionHandlerPathFeature.Error;
+
+                // Manejo de excepciones personalizadas
+                if (exception is ConcurrencyException concurrencyEx)
+                {
+                    statusCode = 409; // Código HTTP para conflictos de concurrencia
+                    errorMessage = concurrencyEx.Message; // Mensaje específico de la excepción
+                    logger.LogWarning(concurrencyEx, "A concurrency conflict occurred.");
+                }
+                else
+                {
+                    // Loguea cualquier otra excepción no controlada
+                    logger.LogError(exception, "An unhandled exception occurred while processing the request.");
+                }
             }
             else
             {
                 logger.LogError("An unhandled exception occurred while processing the request.");
             }
 
-            context.Response.StatusCode = 500;
-            await context.Response.WriteAsync("An error occurred while processing your request");
+            // Establece el código de estado y escribe la respuesta JSON
+            context.Response.StatusCode = statusCode;
+            var response = new
+            {
+                statusCode,
+                error = errorMessage
+            };
+
+            await context.Response.WriteAsync(System.Text.Json.JsonSerializer.Serialize(response));
         });
     });
 }
