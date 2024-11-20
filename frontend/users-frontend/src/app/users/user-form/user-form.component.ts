@@ -126,7 +126,7 @@ export class UserFormComponent implements OnInit {
       email: ['', [
         Validators.required,
         Validators.email,
-        Validators.minLength(5),
+        Validators.minLength(10),
         Validators.maxLength(100)
       ]],
       roleId: [''],

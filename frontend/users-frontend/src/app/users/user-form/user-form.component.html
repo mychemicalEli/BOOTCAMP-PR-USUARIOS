@@ -19,8 +19,7 @@
 
     <!--Nombre-->
     <div class="form-floating mb-3">
-      <input type="text" class="form-control" id="name" formControlName="name" placeholder="Nombre"
-        required minlength="3" maxlength="50">
+      <input type="text" class="form-control" id="name" formControlName="name" placeholder="Nombre">
       <label for="name">Nombre</label>
       
       <!--Validación del Nombre-->
@@ -33,7 +32,7 @@
     <!--Apellidos-->
     <div class="form-floating mb-3">
       <input type="text" class="form-control" id="lastName"  formControlName="lastName"
-        placeholder="Apellidos" required minlength="3" maxlength="100">
+        placeholder="Apellidos">
       <label for="lastName">Apellidos</label>
 
       <!--Validación de los Apellidos-->
@@ -46,13 +45,13 @@
     <!--Email-->
     <div class="form-floating mb-3">
       <input type="email" class="form-control" id="email" formControlName="email"
-    placeholder="Email" required minlength="5" maxlength="100">
+    placeholder="Email">
       <label for="email">Email</label>
 
       <!--Validación Email-->
       <div *ngIf="userForm?.get('email')!.dirty && userForm?.get('email')!.errors" class="text-danger">
         <small *ngIf="userForm?.get('email')!.errors!['required']">Este campo es requerido.</small>
-        <small *ngIf="userForm?.get('email')!.errors!['minlength']">Debe tener más de cinco caracteres.</small>
+        <small *ngIf="userForm?.get('email')!.errors!['minlength']">Debe tener más de diez caracteres.</small>
         <small *ngIf="userForm?.get('email')!.errors!['maxlength']">Debe tener menos de cien caracteres.</small>
         <small *ngIf="userForm?.get('email')!.errors!['email']">Por favor ingrese un correo electrónico válido.</small>
       </div>
