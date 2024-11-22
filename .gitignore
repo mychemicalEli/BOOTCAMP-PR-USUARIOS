@@ -1,0 +1,55 @@
+# Angular-related files
+node_modules/
+dist/
+tmp/
+out-tsc/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+.env
+.idea/
+.DS_Store
+
+# JetBrains Rider/IDEA-specific files
+.idea/
+*.iml
+*.iws
+.idea_modules/
+.idea/workspace.xml
+.idea/libraries/
+.idea/tasks.xml
+.idea/modules.xml
+.idea/gradle.xml
+.idea/assetWizardSettings.xml
+.idea/jsLibraryMappings.xml
+.idea/markdown-navigator.xml
+.idea/coverage/
+.idea/codeStyles/
+.idea/.name
+.idea/modules/
+.idea/shelf/
+.idea/vcs.xml
+.idea/httpRequests/
+
+# macOS-specific files
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Thumbnails
+._*
+
+# macOS folder attributes
+.Spotlight-V100
+.Trashes
+
+# Ignorar archivos de compilación de .NET
+/api/api/obj/
+/api/api/bin/
+
+/# Ignorar archivos específicos de Rider
+.idea/
+
+# Ignorar archivos generados por NuGet
+*.nuget/
