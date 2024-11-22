@@ -6,15 +6,18 @@ using Microsoft.EntityFrameworkCore;
 using users_backend.Application.Dtos;
 using users_backend.Domain.Entities;
 using users_backend.Domain.Persistence;
+using users_backend.Infrastructure.Persistence;
 
 namespace users_backend.Application.Services;
 
 public class UserService :GenericService<User, UserDto>, IUserService
 {
     private readonly IUserRepository _userRepository;
-    public UserService(IUserRepository userRepository, IMapper mapper) : base(userRepository, mapper)
+    private readonly UsersContext _userContext;
+    public UserService(IUserRepository userRepository, IMapper mapper, UsersContext userContext) : base(userRepository, mapper)
     {
         _userRepository = userRepository;
+        _userContext = userContext;
     }
     
     public PagedList<UserDto> GetUsersByCriteriaPaged(string? filter, PaginationParameters paginationParameters)
@@ -27,9 +30,9 @@ public class UserService :GenericService<User, UserDto>, IUserService
     {
         var user = _userRepository.GetById(userDto.Id);
 
-        if (!user.RowVersion.SequenceEqual(userDto.RowVersion))
+        if (user == null)
         {
-            throw new ConcurrencyException ("El usuario ya fue actualizado por otro. Actualiza la información antes de continuar.");
+            throw new ElementNotFoundException();
         }
 
         try
@@ -38,6 +41,8 @@ public class UserService :GenericService<User, UserDto>, IUserService
             user.LastName = userDto.LastName;
             user.Email = userDto.Email;
             user.RoleId = userDto.RoleId;
+            _userContext.Entry(user).OriginalValues["RowVersion"] = userDto.RowVersion;
+
 
             _userRepository.Update(user);
             return _mapper.Map<UserDto>(user);

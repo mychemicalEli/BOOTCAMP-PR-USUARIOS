@@ -24,7 +24,8 @@ public class UsersContext : DbContext
             .IsRequired();
         modelBuilder.Entity<User>()
             .Property(u => u.RowVersion)
-            .IsRowVersion();
+            .IsRowVersion()
+            .IsConcurrencyToken();
     }
 
     public DbSet<User> Users { get; set; }
