@@ -41,6 +41,7 @@ public class UserRepository : GenericRepository<User>, IUserRepository
 
     public override User Update(User user)
     {
+        
         _usersContext.Users.Update(user);
         _usersContext.SaveChanges();
         _usersContext.Entry(user).Reference(i => i.Role).Load();
